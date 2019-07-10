@@ -1,39 +1,44 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect,useRef } from 'react'
 import { titleList, themeColor } from '@/common/data.js'
 import _ from 'lodash'
 
 
-//问题，使用useEffect第二个空数组参数，只在mount后调用绑定onwhell。事件监听函数通过作用域链访问的state永远是初始值
-//尝试过function、尝试过对象属性
-function DotList() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+function DotList({currentIndex, setCurrentIndex}) {
+
+  const currentIndexRef=useRef(0)//使用ref将state保存为实例域
 
   const goto = index => {
     setCurrentIndex(index)
   }
-  const onScroll = e => {
-    if (e.deltaY > 0) {
-      if (currentIndex >= 4) {
-        return
-      }
-      setCurrentIndex(prevState => prevState + 1)
-    } else {
-      if (currentIndex <= 0) {
-        return
-      }
-      setCurrentIndex(prevState => prevState - 1)
-    }
-  }
-  const throttle=_.throttle(onScroll,1000)
 
+
+
+  useEffect(() => {
+    currentIndexRef.current=currentIndex
+  },[currentIndex])
 
   useEffect(() => {   
-    document.onwheel = throttle
+    const onScroll = e => {
+      console.log(currentIndexRef.current)
+      
+      if (e.deltaY > 0) {
+        if (currentIndexRef.current >= 4) {
+          return
+        }
+        setCurrentIndex(prevState => prevState + 1)
+      } else {
+        if (currentIndexRef.current <= 0) {
+          return
+        }
+        setCurrentIndex(prevState => prevState - 1)
+      }
+    }
+    document.onwheel = _.debounce(onScroll,300)
     return () => {
       document.onwheel = null
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  })
+  },[])
  
   return (
     <nav className="dot-list">
@@ -54,6 +59,7 @@ function DotList() {
               }}
             >
               <img src={item.svg} alt="" />
+              <span>{item.title}</span>
             </li>
           )
         })}
@@ -77,6 +83,7 @@ function DotList() {
             margin: 1.6em;
             border-radius: 50%;
             background: ${themeColor};
+            filter: saturate(3);
             &:hover {
               @include hover;
               transition: transform ease 0.6s;
