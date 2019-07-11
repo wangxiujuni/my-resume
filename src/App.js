@@ -5,7 +5,7 @@ import FixedNav from "./components/FixedNav"
 import DotList from "./components/DotList"
 
 function App() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(4)
 
   return (
     <div className="App">

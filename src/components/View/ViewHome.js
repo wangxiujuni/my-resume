@@ -2,13 +2,15 @@ import React from 'react'
 import { home } from '@/common/data.js'
 import { themeColor } from '@/common/data'
 
-const { avatar, avatarUrl, title, details } = home
+const { avatar, avatarURL, title, details } = home
 
 export default function ViewHome() {
   return (
     <section className="home-container">
       <div className="home-avatar">
-        <a href={avatarUrl} />
+        {/* a11yWarning */}
+        {/* eslint-disable-next-line*/}
+        <a href={avatarURL} />
       </div>
       <div className="home-content">
         <p className="home-content-title">{title}</p>
@@ -30,7 +32,7 @@ export default function ViewHome() {
             display: block;
             width: 10em;
             height: 10em;
-            margin:20% auto 0;
+            margin:10% auto 0;
             background: url('${avatar}') center / contain no-repeat;
             border-radius: 50%;
             transition: transform ease 0.5s;
