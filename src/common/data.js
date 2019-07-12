@@ -137,6 +137,7 @@ export const works = {
     {
       className: 'remuse',
       name: 'React Hooks个人简历',
+      url:'http://wang.codetech.top/remuse',
       details: [
         '使用React Hooks的Web简历',
         '对比class组件，深入了解了Hooks的思想',
@@ -147,6 +148,7 @@ export const works = {
     {
       className: 'weather',
       name: 'Vue PWA 天气app',
+      url:'http://wang.codetech.top',
       details: [
         '使用Vue构建的PWA应用',
         '对PWA思想和Service Worker进行了了解',

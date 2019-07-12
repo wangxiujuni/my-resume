@@ -20,15 +20,13 @@ function View({ currentIndex }) {
   }else{
     classList[currentIndex]='show'
   }
-
-  console.log(classList,oldCurrentIndex)
   
   oldCurrentIndex=currentIndex
 
   return (<main>
     {
       render.map((Item,index)=>(
-        <Item className={classList[index]} key={index}></Item>
+        <Item className={classList[index]} currentIndex={currentIndex} key={index}></Item>
       ))
     }
     <style global jsx>{`

@@ -4,21 +4,27 @@ import { works, themeColor } from '@/common/data'
 const { title, worksList } = works
 
 export default function ViewWorks(props) {
+  //为table添加动画
+  let workItemClass = 'works-main-item'
+  if (props.currentIndex === 3) {
+    workItemClass += ' animated zoomIn'
+  }
+
   return (
     <section className={`works-container ${props.className}`}>
       <div className="works-title">{title}</div>
       <div className="works-main">
         {worksList.map((item, index) => (
-          <div className={`works-main-item ${item.className}`} key={index}>
+          <div className={`${item.className} ${workItemClass}`} key={index}>
             <div className="works-main-item-title">{item.name}</div>
             {/* a11yWarning */}
             {/* eslint-disable-next-line*/}
             <a
-              href="https://www.baidu.com/"
+              href={item.url}
               className="works-main-item-image"
               style={{ backgroundImage: `url(${item.imageURL})` }}
             />
-            <a href="https://www.baidu.com/" className="works-main-item-detail">
+            <a href={item.url} className="works-main-item-detail">
               {item.details.map((item, index) => (
                 <p key={index}>{item}</p>
               ))}
@@ -29,10 +35,10 @@ export default function ViewWorks(props) {
       <style jsx>{`
         .works-container {
           position: absolute;
-          top:0;
-          bottom:0;
-          left:0;
-          right:0;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
           background: #f0f2f1;
           overflow: hidden;
           .works-title {

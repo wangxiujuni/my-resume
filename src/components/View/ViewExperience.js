@@ -81,6 +81,9 @@ export default function ViewContact(props) {
             padding: 0 20%;
             color: rgba(0, 0, 0, 0.6);
             margin-top: 8%;
+            @media screen and (max-width:600px){
+              padding:0 5%;
+            }
             .experience-company {
               display: flex;
               align-items: center;
@@ -91,21 +94,31 @@ export default function ViewContact(props) {
               &-image {
                 width: 100px;
                 height: 50px;
+                flex:none;
                 background: center/ contain no-repeat;
               }
               &-content {
                 padding-left: 1em;
                 font-size: 17px;
+                @media screen and (max-width:600px){
+                  font-size:13px;
+                }
                 &-item {
                   margin: 5px 0;
                 }
               }
               &-title {
                 font-size: 20px;
+                @media screen and (max-width:600px){
+                  font-size: 16px;
+                }
               }
               &-job {
                 color: rgba(0, 0, 0, 0.4);
                 font-size: 18px;
+                @media screen and (max-width:600px){
+                  font-size:14px;
+                }
               }
             }
             .experience-end,

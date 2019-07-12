@@ -15,8 +15,6 @@ function DotList({ currentIndex, setCurrentIndex }) {
 
   useEffect(() => {
     const onScroll = e => {
-      console.log(currentIndexRef.current)
-
       if (e.deltaY > 0) {
         if (currentIndexRef.current >= 4) {
           return
@@ -42,8 +40,6 @@ function DotList({ currentIndex, setCurrentIndex }) {
         {titleList.map((item, index) => {
           let className = 'dot-list-item'
           if (currentIndex === index) {
-            console.log(currentIndex, 11)
-
             className += ' dot-list-current'
           }
           return (
@@ -65,6 +61,9 @@ function DotList({ currentIndex, setCurrentIndex }) {
 
       <style jsx>{`
         .dot-list {
+          @media screen and (max-width:600px){
+            display:none;
+          }
           position: fixed;
           right: 0;
           top: 50%;
@@ -88,13 +87,13 @@ function DotList({ currentIndex, setCurrentIndex }) {
               border-radius: 50%;
               background: ${themeColor};
               filter: saturate(3);
-              cursor: pointer;
               overflow: hidden;
 
 
               &:hover {
                 @include hover;
                 transition: transform ease 0.6s;
+                cursor: pointer;
               }
               img {
                 opacity: 0;

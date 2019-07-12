@@ -4,12 +4,18 @@ import { skills, themeColor } from '@/common/data'
 const { title, skillTable, skillContent, otherSkills } = skills
 
 export default function ViewSkills(props) {
+  //为table添加动画
+  let tableClass='skills-table'
+  if(props.currentIndex===2){
+    tableClass+=" animated slideInLeft"
+  }
+
   return (
     <section className={`skills-container ${props.className}`}>
       <div className="skills-title">{title}</div>
       <div className="skills-main">
-        <div>
-          <div className="skills-table">
+        <div className="skills-main-container">
+          <div className={tableClass}>
             {skillTable.map((item, index) => (
               <div
                 className="skills-table-item"
@@ -63,6 +69,9 @@ export default function ViewSkills(props) {
             position: relative;
             width: 80%;
             margin: 0 auto;
+            &-container{
+              display:flex;
+            }
             .skills-table {
               width: 60%;
               font-weight: 600;
@@ -76,8 +85,7 @@ export default function ViewSkills(props) {
               }
             }
             .skills-other {
-              display: flex;
-              width: 60%;
+              display: inline-flex;
               height: 13em;
               margin-top: 7em;
               flex-wrap: wrap;
@@ -115,13 +123,14 @@ export default function ViewSkills(props) {
             }
           }
           .skills-content {
-            position: absolute;
-            right: 0;
-            top: 15%;
             color: rgba(0, 0, 0, 0.7);
             &-item {
               font-size: 16px;
               margin: 2em 0;
+              @media screen and (max-width:600px){
+                font-size:12px;
+                margin: 1em 0;
+              }
             }
           }
         }

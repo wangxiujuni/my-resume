@@ -4,12 +4,18 @@ import { mine, themeColor } from '@/common/data'
 const { baseInfo, title, details } = mine
 
 export default function ViewMine(props) {
+  //为icon添加动画
+  let iconClass='mine-baseinfo-item'
+  if(props.currentIndex===1){
+    iconClass+=" animated zoomIn"
+  }
+
   return (
     <section className={`mine-container ${props.className}`}>
       <div className="mine-title">{title}</div>
       <ul className="mine-baseinfo">
         {baseInfo.map((item, index) => (
-          <li className="mine-baseinfo-item" key={index}>
+          <li className={iconClass} key={index}>
             <div className="mine-baseinfo-icon">
               <span
                 className="mine-baseinfo-icon-svg"

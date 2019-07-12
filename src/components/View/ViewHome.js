@@ -5,21 +5,29 @@ import { themeColor } from '@/common/data'
 const { avatar, avatarURL, title, details } = home
 
 export default function ViewHome(props) {
+  //为home添加动画
+  let homeClass = ''
+  if (props.currentIndex === 0) {
+    homeClass += 'animated zoomIn'
+  }
+
   return (
     <section className={`home-container ${props.className}`}>
-      <div className="home-avatar">
-        {/* a11yWarning */}
-        {/* eslint-disable-next-line*/}
-        <a href={avatarURL} />
-      </div>
-      <div className="home-content">
-        <p className="home-content-title">{title}</p>
-        <div className="home-content-details">
-          {details.map((item, index) => (
-            <p className="home-details-list" key={index}>
-              {item}
-            </p>
-          ))}
+      <div className={homeClass}>
+        <div className="home-avatar">
+          {/* a11yWarning */}
+          {/* eslint-disable-next-line*/}
+          <a href={avatarURL} />
+        </div>
+        <div className="home-content">
+          <p className="home-content-title">{title}</p>
+          <div className="home-content-details">
+            {details.map((item, index) => (
+              <p className="home-details-list" key={index}>
+                {item}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
       <style jsx>{`
