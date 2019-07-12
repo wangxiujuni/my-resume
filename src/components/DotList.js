@@ -14,22 +14,41 @@ function DotList({ currentIndex, setCurrentIndex }) {
   }, [currentIndex])
 
   useEffect(() => {
+    //适配鼠标滚轮事件
     const onScroll = e => {
-      if (e.deltaY > 0) {
-        if (currentIndexRef.current >= 4) {
-          return
-        }
+      if (currentIndexRef.current<4&&e.deltaY > 0) {
         setCurrentIndex(prevState => prevState + 1)
-      } else {
-        if (currentIndexRef.current <= 0) {
-          return
-        }
+        return
+      }
+      if(currentIndexRef.current>0&&e.deltaY < 0){
         setCurrentIndex(prevState => prevState - 1)
+        return
       }
     }
     document.onwheel = _.debounce(onScroll, 300)
+    //适配滑动事件
+    let startClientY
+    const onTouchStart = e => {
+      startClientY = e.changedTouches[0].clientY
+    }
+    const onTouchEnd = e => {
+      const endClientY = e.changedTouches[0].clientY
+      if (currentIndexRef.current < 4&&startClientY - endClientY > 200) {
+        setCurrentIndex(prevState => prevState + 1)
+        return
+      } 
+      if (currentIndexRef.current > 0&&startClientY - endClientY < -200) {
+        setCurrentIndex(prevState => prevState - 1)
+        return
+      }
+    }
+    document.ontouchstart = onTouchStart
+    document.ontouchend = onTouchEnd
+
     return () => {
       document.onwheel = null
+      document.ontouchstart = null
+      document.ontouchend = null
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -61,14 +80,14 @@ function DotList({ currentIndex, setCurrentIndex }) {
 
       <style jsx>{`
         .dot-list {
-          @media screen and (max-width:600px){
-            display:none;
+          @media screen and (max-width: 600px) {
+            display: none;
           }
           position: fixed;
           right: 0;
           top: 50%;
           transform: translateY(-50%);
-          z-index:2;
+          z-index: 2;
           @mixin hover {
             transform: scale(2);
             img {
@@ -88,7 +107,6 @@ function DotList({ currentIndex, setCurrentIndex }) {
               background: ${themeColor};
               filter: saturate(3);
               overflow: hidden;
-
 
               &:hover {
                 @include hover;
