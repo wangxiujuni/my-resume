@@ -131,31 +131,54 @@ export const skills = {
   ]
 }
 
-export const works={
-  title:'作品集',
-  worksList:[
-    { 
-      className:'remuse',
-      name:'React Hooks个人简历',
-      details:['使用React Hooks的Web简历','对比class组件，深入了解了Hooks的思想','加深了对css3的使用'],
-      imageURL:require('@/assets/remuse.jpg')
+export const works = {
+  title: '作品集',
+  worksList: [
+    {
+      className: 'remuse',
+      name: 'React Hooks个人简历',
+      details: [
+        '使用React Hooks的Web简历',
+        '对比class组件，深入了解了Hooks的思想',
+        '加深了对css3的使用'
+      ],
+      imageURL: require('@/assets/remuse.jpg')
     },
-    { 
-      className:'weather',
-      name:'Vue PWA 天气app',
-      details:['使用Vue构建的PWA应用','对PWA思想和Service Worker进行了了解','对Workbox配置进行了了解'],
-      imageURL:require('@/assets/weather.jpg')
+    {
+      className: 'weather',
+      name: 'Vue PWA 天气app',
+      details: [
+        '使用Vue构建的PWA应用',
+        '对PWA思想和Service Worker进行了了解',
+        '对Workbox配置进行了了解'
+      ],
+      imageURL: require('@/assets/weather.jpg')
     }
   ]
-
 }
 
-export const experience={
-  title:'经历',
-  companyImage:require('@/assets/guotouchuangzhi.png'),
-  company:'吉林市国投创智科技有限公司',
-  job:'实习web开发工程师',
-  start:'2018/07',
-  end:'2019/01',
-  jobContent:['sssssss','sssssss']
+export const experience = {
+  title: '经历',
+  companyImage: require('@/assets/guotouchuangzhi.png'),
+  company: '吉林市国投创智科技有限公司',
+  job: '实习web开发工程师',
+  start: '2018/07',
+  end: '2019/01',
+  jobContent: [
+    '使用vue全家桶和element-ui进行项目构建',
+    '在实习的过程中不断自学，丰富自己的前端知识'
+  ],
+  contactIcon: [
+    { className:'blog',
+      url: 'https://www.cnblogs.com/wangxiujuni',
+      icon: require('@/assets/blog.svg')},
+    { className:'github',
+      url: 'https://github.com/wangxiujuni',
+      icon: require('@/assets/github.svg')},
+    { 
+      className:'wechat',
+      url: 'javascript:void',
+      icon: require('@/assets/wechat.svg')
+    }
+  ]
 }

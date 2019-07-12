@@ -5,7 +5,11 @@ import ViewSkills from './ViewSkills'
 import ViewWorks from './ViewWorks'
 import ViewExperience from './ViewExperience'
 
+
+
 function View({ currentIndex }) {
+ 
+
   const Render = () => {
     switch (currentIndex) {
     case 0:
