@@ -3,9 +3,9 @@ import { mine, themeColor } from '@/common/data'
 
 const { baseInfo, title, details } = mine
 
-export default function ViewMine() {
+export default function ViewMine(props) {
   return (
-    <section className="mine-container">
+    <section className={`mine-container ${props.className}`}>
       <div className="mine-title">{title}</div>
       <ul className="mine-baseinfo">
         {baseInfo.map((item, index) => (
@@ -32,7 +32,11 @@ export default function ViewMine() {
       </div>
       <style jsx>{`
         .mine-container {
-          height: 100vh;
+          position: absolute;
+          top:0;
+          bottom:0;
+          left:0;
+          right:0;
           background: rgb(240, 242, 241);
           color: ${themeColor};
           overflow: hidden;

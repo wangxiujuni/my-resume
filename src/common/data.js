@@ -177,6 +177,7 @@ export const experience = {
       icon: require('@/assets/github.svg')},
     { 
       className:'wechat',
+      // eslint-disable-next-line no-script-url
       url: 'javascript:void',
       icon: require('@/assets/wechat.svg')
     }

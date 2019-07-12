@@ -3,9 +3,9 @@ import { skills, themeColor } from '@/common/data'
 
 const { title, skillTable, skillContent, otherSkills } = skills
 
-export default function ViewSkills() {
+export default function ViewSkills(props) {
   return (
-    <section className="skills-container">
+    <section className={`skills-container ${props.className}`}>
       <div className="skills-title">{title}</div>
       <div className="skills-main">
         <div>
@@ -46,8 +46,12 @@ export default function ViewSkills() {
       </div>
       <style jsx>{`
         .skills-container {
+          position: absolute;
+          top:0;
+          bottom:0;
+          left:0;
+          right:0;
           background: ${themeColor};
-          height: 100vh;
           overflow: hidden;
           .skills-title {
             margin: 10% 0 2rem;

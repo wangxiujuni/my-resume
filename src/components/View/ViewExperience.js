@@ -12,9 +12,9 @@ const {
   contactIcon
 } = experience
 
-export default function ViewContact() {
+export default function ViewContact(props) {
   return (
-    <section className="experience-container">
+    <section className={`experience-container ${props.className}`}>
       <div className="experience-title">{title}</div>
       <div className="experience-main">
         <div className="experience-end">
@@ -64,8 +64,12 @@ export default function ViewContact() {
       </footer>
       <style jsx>{`
         .experience-container {
+          position: absolute;
+          top:0;
+          bottom:0;
+          left:0;
+          right:0;
           background: ${themeColor};
-          height: 100vh;
           overflow: hidden;
           .experience-title {
             text-align: center;

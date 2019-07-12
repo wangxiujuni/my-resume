@@ -3,9 +3,9 @@ import { works, themeColor } from '@/common/data'
 
 const { title, worksList } = works
 
-export default function ViewWorks() {
+export default function ViewWorks(props) {
   return (
-    <section className="works-container">
+    <section className={`works-container ${props.className}`}>
       <div className="works-title">{title}</div>
       <div className="works-main">
         {worksList.map((item, index) => (
@@ -20,7 +20,7 @@ export default function ViewWorks() {
             />
             <a href="https://www.baidu.com/" className="works-main-item-detail">
               {item.details.map((item, index) => (
-                <p>{item}</p>
+                <p key={index}>{item}</p>
               ))}
             </a>
           </div>
@@ -28,8 +28,12 @@ export default function ViewWorks() {
       </div>
       <style jsx>{`
         .works-container {
+          position: absolute;
+          top:0;
+          bottom:0;
+          left:0;
+          right:0;
           background: #f0f2f1;
-          height: 100vh;
           overflow: hidden;
           .works-title {
             margin-top: 10%;

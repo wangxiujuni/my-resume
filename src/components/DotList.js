@@ -69,6 +69,7 @@ function DotList({ currentIndex, setCurrentIndex }) {
           right: 0;
           top: 50%;
           transform: translateY(-50%);
+          z-index:2;
           @mixin hover {
             transform: scale(2);
             img {

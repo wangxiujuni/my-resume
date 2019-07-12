@@ -4,9 +4,9 @@ import { themeColor } from '@/common/data'
 
 const { avatar, avatarURL, title, details } = home
 
-export default function ViewHome() {
+export default function ViewHome(props) {
   return (
-    <section className="home-container">
+    <section className={`home-container ${props.className}`}>
       <div className="home-avatar">
         {/* a11yWarning */}
         {/* eslint-disable-next-line*/}
@@ -24,7 +24,11 @@ export default function ViewHome() {
       </div>
       <style jsx>{`
         .home-container {
-          height: 100vh;
+          position: absolute;
+          top:0;
+          bottom:0;
+          left:0;
+          right:0;
           background: ${themeColor};
           .home-avatar{
             border-top:1px solid transparent;
